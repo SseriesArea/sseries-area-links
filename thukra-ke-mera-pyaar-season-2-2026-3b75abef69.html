@@ -7,38 +7,38 @@
 <style>
 :root{--bg:#05050a;--panel:rgba(12,14,24,.9);--border:rgba(0,255,200,.18);--text:#e8f0ff;--muted:#7a8ba3;--neon:#00f5d4;--neon2:#ff2e63;--neon3:#7b61ff}
 *{box-sizing:border-box;margin:0;padding:0}
-body{background:radial-gradient(ellipse at 15% 0,rgba(0,245,212,.09),transparent 50%),radial-gradient(ellipse at 85% 25%,rgba(255,46,99,.07),transparent 45%),radial-gradient(ellipse at 50% 100%,rgba(123,97,255,.06),transparent 40%),var(--bg);color:var(--text);font:16px/1.5 "Segoe UI",system-ui,-apple-system,sans-serif;padding:24px 12px 60px;min-height:100vh}
+ body{background:radial-gradient(ellipse at 15% 0,rgba(0,245,212,.09),transparent 50%),radial-gradient(ellipse at 85% 25%,rgba(255,46,99,.07),transparent 45%),radial-gradient(ellipse at 50% 100%,rgba(123,97,255,.06),transparent 40%),var(--bg);color:var(--text);font:14px/1.4 "Segoe UI",system-ui,-apple-system,sans-serif;padding:12px 10px 24px;min-height:100vh}
 main{max-width:900px;margin:0 auto}
- header{position:relative;text-align:center;margin-bottom:28px;padding-bottom:18px;border-bottom:1px solid rgba(0,245,212,.12)}
-h1{font-size:clamp(22px,5vw,34px);font-weight:800;letter-spacing:-.4px;background:linear-gradient(90deg,#00f5d4,#7b61ff,#ff2e63);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:6px}
-.sub{color:var(--muted);font-size:14px}
- .info-row{display:flex;align-items:center;margin-top:12px}
- .audio-info{display:inline-flex;flex-direction:column;align-items:flex-start;gap:1px;max-width:100%;background:rgba(0,245,212,.08);border:1px solid rgba(0,245,212,.28);color:var(--neon);font-size:13px;font-weight:600;line-height:1.35;padding:6px 13px;border-radius:16px}
+ header{position:relative;text-align:center;margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid rgba(0,245,212,.12)}
+ h1{font-size:clamp(18px,4.5vw,28px);font-weight:800;letter-spacing:-.4px;background:linear-gradient(90deg,#00f5d4,#7b61ff,#ff2e63);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:4px}
+ .sub{color:var(--muted);font-size:12px}
+  .info-row{display:flex;align-items:center;margin-top:8px;padding-bottom:8px;margin-bottom:8px;border-bottom:1px solid rgba(0,245,212,.18)}
+  .audio-info{display:inline-flex;flex-direction:column;align-items:flex-start;gap:1px;max-width:100%;background:rgba(0,245,212,.08);border:1px solid rgba(0,245,212,.28);color:var(--neon);font-size:11.5px;font-weight:600;line-height:1.3;padding:4px 10px;border-radius:13px}
  .metadata-row{white-space:normal}
 .tabs-wrapper{background:var(--panel);border:1px solid var(--border);border-radius:16px;overflow:hidden;box-shadow:0 0 30px rgba(0,245,212,.08)}
-.tab-nav{display:flex;flex-wrap:wrap;gap:6px;padding:14px 14px 10px;background:rgba(0,0,0,.25);border-bottom:1px solid rgba(0,245,212,.12)}
-.tab-btn{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);color:var(--muted);font:650 13.5px "Segoe UI",system-ui,sans-serif;padding:7px 12px;border-radius:9px;cursor:pointer;transition:all .2s ease;min-width:42px;text-align:center}
+ .tab-nav{display:flex;flex-wrap:wrap;gap:4px;padding:8px 8px 6px;background:rgba(0,0,0,.25);border-bottom:1px solid rgba(0,245,212,.12)}
+ .tab-btn{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);color:var(--muted);font:650 12px "Segoe UI",system-ui,sans-serif;padding:5px 9px;border-radius:7px;cursor:pointer;transition:all .2s ease;min-width:34px;text-align:center}
 .tab-btn:hover{border-color:rgba(0,245,212,.35);color:var(--neon)}
 .tab-btn.active{background:linear-gradient(135deg,rgba(0,245,212,.22),rgba(123,97,255,.18));border-color:rgba(0,245,212,.55);color:var(--neon);box-shadow:0 0 14px rgba(0,245,212,.25)}
- .tab-content{display:none;padding:18px 16px 20px;animation:fadeIn .25s ease}
+ .tab-content{display:none;padding:10px 10px 12px;animation:fadeIn .25s ease}
  .tab-content.active{display:block}
  @keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
- .ep-title{font-size:18px;font-weight:700;margin-bottom:16px;display:flex;align-items:center;gap:10px}
- .ep-title span{background:linear-gradient(135deg,rgba(0,245,212,.2),rgba(123,97,255,.15));border:1px solid rgba(0,245,212,.3);color:var(--neon);font-size:13px;padding:3px 10px;border-radius:8px}
- .quality-nav{display:flex;flex-wrap:wrap;gap:10px;padding:2px 0 22px;border-bottom:1px solid rgba(255,255,255,.07)}
- .quality-btn{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.12);color:var(--muted);font:650 15px "Segoe UI",system-ui,sans-serif;padding:10px 16px;border-radius:12px;cursor:pointer;transition:all .2s ease}
+ .ep-title{font-size:16px;font-weight:700;margin-bottom:10px;display:flex;align-items:center;gap:8px}
+ .ep-title span{background:linear-gradient(135deg,rgba(0,245,212,.2),rgba(123,97,255,.15));border:1px solid rgba(0,245,212,.3);color:var(--neon);font-size:11px;padding:2px 7px;border-radius:6px}
+ .quality-nav{display:flex;flex-wrap:wrap;gap:6px;padding:2px 0 10px;border-bottom:1px solid rgba(255,255,255,.07)}
+ .quality-btn{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.12);color:var(--muted);font:650 12.5px "Segoe UI",system-ui,sans-serif;padding:6px 9px;border-radius:8px;cursor:pointer;transition:all .2s ease}
  .quality-btn:hover{border-color:rgba(0,245,212,.45);color:var(--neon)}
  .quality-btn.active{background:linear-gradient(135deg,rgba(0,245,212,.2),rgba(123,97,255,.16));border-color:rgba(0,245,212,.65);color:var(--neon);box-shadow:0 0 14px rgba(0,245,212,.2)}
  .quality{padding:14px 0;border-bottom:1px solid rgba(255,255,255,.05)}
  .quality:last-child{border-bottom:0}
- .quality-content{display:none;padding:26px 0 22px}
+ .quality-content{display:none;padding:14px 0 10px}
  .quality-content.active{display:block}
  .quality-content .quality-head{display:block;margin-bottom:22px}
- .quality-content .quality-name{font-size:clamp(24px,4vw,34px);font-weight:800;margin-bottom:14px}
+ .quality-content .quality-name{font-size:clamp(18px,3vw,24px);font-weight:800;margin-bottom:8px}
  .quality-content .quality-name .tag{display:none}
- .quality-content .meta{font-size:16px;gap:14px;flex-wrap:wrap}
- .quality-content .links{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px}
- .quality-content .link{font-size:16px;text-align:center;padding:13px 16px;border-radius:12px}
+ .quality-content .meta{font-size:13px;gap:8px;flex-wrap:wrap}
+ .quality-content .links{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:6px}
+ .quality-content .link{font-size:13.5px;text-align:center;padding:8px 10px;border-radius:8px}
 .quality-head{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:9px;flex-wrap:wrap}
 .quality-name{font-size:14.5px;font-weight:600;display:flex;align-items:center;gap:8px}
 .tag{font-size:10.5px;font-weight:700;padding:2px 7px;border-radius:5px;letter-spacing:.3px}
@@ -56,7 +56,7 @@ h1{font-size:clamp(22px,5vw,34px);font-weight:800;letter-spacing:-.4px;backgroun
 .tag-144{background:rgba(144,164,174,.14);color:#c5d0d5;border:1px solid rgba(144,164,174,.36)}
 .tag-low{background:rgba(255,255,255,.08);color:var(--muted);border:1px solid rgba(255,255,255,.14)}
 .meta{display:flex;align-items:center;gap:10px;color:var(--muted);font-size:12.5px}
-.size{color:var(--muted);font-size:12.5px}
+ .size{color:#ffd166 !important;font-size:13px;font-weight:600}
 .audio-meta{color:var(--neon);white-space:nowrap}
 .sub-meta{color:#b794ff;white-space:nowrap}
 .links{display:flex;flex-wrap:wrap;gap:8px}
@@ -67,11 +67,11 @@ h1{font-size:clamp(22px,5vw,34px);font-weight:800;letter-spacing:-.4px;backgroun
 .link.drive{background:linear-gradient(135deg,#ff2e63,#d41e4f);color:#fff;box-shadow:0 0 10px rgba(255,46,99,.3)}
 .link.drive:hover{background:linear-gradient(135deg,#ff5c85,#ff2e63);box-shadow:0 0 16px rgba(255,46,99,.5)}
 .empty{color:var(--muted);font-size:14px}
-  footer{text-align:center;margin-top:30px;color:var(--muted);font-size:12px}
+  footer{text-align:center;margin-top:16px;color:var(--muted);font-size:11px}
   .telegram-brand{display:inline-flex;align-items:center;gap:5px;background:rgba(0,245,212,.06);border:1px solid rgba(0,245,212,.48);border-radius:18px;padding:5px 12px;color:#7ec8ff;text-decoration:none;font-size:12px;font-weight:700;white-space:nowrap;box-shadow:0 0 8px rgba(0,245,212,.24),inset 0 0 8px rgba(0,245,212,.06);text-shadow:0 0 7px rgba(126,200,255,.8)}
  .telegram-brand:hover{color:#d0f4ff;text-decoration:none;box-shadow:0 0 15px rgba(0,245,212,.5),inset 0 0 10px rgba(0,245,212,.1)}
  .telegram-brand svg{width:15px;height:15px;fill:currentColor;filter:drop-shadow(0 0 4px rgba(126,200,255,.8))}
-  @media(max-width:540px){.quality-nav{gap:7px}.quality-btn{flex:1;min-width:calc(50% - 7px);padding:9px 10px;font-size:14px}.tab-nav{padding:12px 10px 8px;gap:5px}.tab-btn{padding:6px 10px;font-size:13px;min-width:38px}.tab-content{padding:14px 12px 16px}.link{min-width:80px}}
+   @media(max-width:540px){.quality-nav{gap:5px}.quality-btn{flex:1;min-width:calc(50% - 5px);padding:6px 7px;font-size:11.5px}.tab-nav{padding:7px 7px 5px;gap:4px}.tab-btn{padding:5px 8px;font-size:12px;min-width:34px}.tab-content{padding:9px 9px 10px}.link{min-width:70px}}
 </style>
 </head>
 <body><main>
