@@ -164,42 +164,43 @@ document.querySelectorAll('.quality-btn').forEach(function(button) {
     if (quality) quality.classList.add('active');
  });
 });
- var portalAudioContext = null;
- var navigationSoundIndex = 0;
-  function playPianoSound() {
+  var portalAudioContext = null;
+var navigationSoundIndex = 0;
+function playPianoSound() {
   try {
     var AudioContext = window.AudioContext || window.webkitAudioContext;
     if (!AudioContext) return;
     portalAudioContext = portalAudioContext || new AudioContext();
     if (portalAudioContext.state === 'suspended') portalAudioContext.resume();
-      var notes = [261.63, 293.66, 329.63, 392.00, 440.00, 523.25];
-      var note = notes[navigationSoundIndex % notes.length];
-      navigationSoundIndex += 1;
-      var now = portalAudioContext.currentTime;
-      var master = portalAudioContext.createGain();
-      master.gain.setValueAtTime(.0001, now);
-      master.gain.exponentialRampToValueAtTime(.032, now + .012);
-      master.gain.exponentialRampToValueAtTime(.0001, now + 1.05);
-      master.connect(portalAudioContext.destination);
-      [
-        {multiplier: 1, level: .82, type: 'sine'},
-        {multiplier: 2, level: .16, type: 'sine'},
-        {multiplier: 3, level: .07, type: 'triangle'}
-      ].forEach(function(partial) {
-        var oscillator = portalAudioContext.createOscillator();
-        var partialGain = portalAudioContext.createGain();
-        var frequency = note * partial.multiplier;
-        oscillator.type = partial.type;
-        oscillator.frequency.setValueAtTime(frequency, now);
-        oscillator.frequency.exponentialRampToValueAtTime(frequency * .985, now + .9);
-        partialGain.gain.value = partial.level;
-        oscillator.connect(partialGain);
-        partialGain.connect(master);
-        oscillator.start(now);
-        oscillator.stop(now + 1.1);
-      });
+    var notes = [261.63, 293.66, 329.63, 392.00, 440.00, 523.25];
+    var note = notes[navigationSoundIndex % notes.length];
+    navigationSoundIndex += 1;
+    var now = portalAudioContext.currentTime;
+    var master = portalAudioContext.createGain();
+    master.gain.setValueAtTime(.0001, now);
+    master.gain.exponentialRampToValueAtTime(.032, now + .012);
+    master.gain.exponentialRampToValueAtTime(.0001, now + 1.05);
+    master.connect(portalAudioContext.destination);
+    [
+      {multiplier: 1, level: .82, type: 'sine'},
+      {multiplier: 2, level: .16, type: 'sine'},
+      {multiplier: 3, level: .07, type: 'triangle'}
+    ].forEach(function(partial) {
+      var oscillator = portalAudioContext.createOscillator();
+      var partialGain = portalAudioContext.createGain();
+      var frequency = note * partial.multiplier;
+      oscillator.type = partial.type;
+      oscillator.frequency.setValueAtTime(frequency, now);
+      oscillator.frequency.exponentialRampToValueAtTime(frequency * .985, now + .9);
+      partialGain.gain.value = partial.level;
+      oscillator.connect(partialGain);
+      partialGain.connect(master);
+      oscillator.start(now);
+      oscillator.stop(now + 1.1);
+    });
   } catch (error) {}
 }
+
  function showEpisode(index) {
   var panels = Array.from(document.querySelectorAll('.tab-content'));
   var tabs = Array.from(document.querySelectorAll('.tab-btn'));
