@@ -84,7 +84,8 @@ main{max-width:900px;margin:0 auto}
 .sub-meta{color:#b794ff;white-space:nowrap}
  .links{display:flex;flex-wrap:wrap;gap:8px}
  .part-nav{display:flex;flex-wrap:wrap;gap:7px;margin:4px 0 9px}
- .part-btn{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.16);color:var(--muted);font:750 13px "Segoe UI",system-ui,sans-serif;padding:7px 12px;border-radius:8px;cursor:pointer;transition:all .2s ease}
+ .part-btn{display:inline-flex;flex-direction:column;align-items:center;gap:2px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.16);color:var(--muted);font:750 13px "Segoe UI",system-ui,sans-serif;padding:7px 12px;border-radius:8px;cursor:pointer;transition:all .2s ease}
+ .part-btn small{font-size:11px;font-weight:650;opacity:.85}
  .part-btn:hover{border-color:rgba(255,193,7,.55);color:#ffd166}
  .part-btn.active{background:linear-gradient(135deg,rgba(255,193,7,.24),rgba(255,112,184,.16));border-color:rgba(255,193,7,.72);color:#ffd166;box-shadow:0 0 13px rgba(255,193,7,.2)}
  .part-content{display:none}
@@ -186,6 +187,8 @@ document.querySelectorAll('.part-btn').forEach(function(button) {
     button.classList.add('active');
     var part = quality.querySelector('#' + button.dataset.part);
     if (part) part.classList.add('active');
+    var size = quality.querySelector('.part-size-display');
+    if (size) size.textContent = button.dataset.partSize || '';
   });
 });
   var portalAudioContext = null;
