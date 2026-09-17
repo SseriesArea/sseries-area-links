@@ -83,8 +83,12 @@ main{max-width:900px;margin:0 auto}
  .audio-meta{color:var(--neon);white-space:normal;min-width:0;overflow-wrap:anywhere;word-break:break-word}
 .sub-meta{color:#b794ff;white-space:nowrap}
  .links{display:flex;flex-wrap:wrap;gap:8px}
- .part-link{display:flex;flex-direction:column;gap:4px;min-width:120px}
- .part-label{color:var(--muted);font-size:11px;font-weight:700;text-align:center}
+ .part-nav{display:flex;flex-wrap:wrap;gap:7px;margin:4px 0 9px}
+ .part-btn{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.16);color:var(--muted);font:750 13px "Segoe UI",system-ui,sans-serif;padding:7px 12px;border-radius:8px;cursor:pointer;transition:all .2s ease}
+ .part-btn:hover{border-color:rgba(255,193,7,.55);color:#ffd166}
+ .part-btn.active{background:linear-gradient(135deg,rgba(255,193,7,.24),rgba(255,112,184,.16));border-color:rgba(255,193,7,.72);color:#ffd166;box-shadow:0 0 13px rgba(255,193,7,.2)}
+ .part-content{display:none}
+ .part-content.active{display:block}
  .link{background:linear-gradient(135deg,#00c9a7,#00a88a);color:#04120f;text-decoration:none;font-size:12.5px;font-weight:700;padding:7px 13px;border-radius:8px;transition:all .2s ease;box-shadow:0 0 10px rgba(0,245,212,.25)}
 .link:hover{background:linear-gradient(135deg,#00f5d4,#00c9a7);transform:translateY(-1px);box-shadow:0 0 16px rgba(0,245,212,.5)}
 .link.hub{background:linear-gradient(135deg,#7b61ff,#5b4bc4);color:#fff;box-shadow:0 0 10px rgba(123,97,255,.3)}
@@ -172,7 +176,17 @@ document.querySelectorAll('.quality-btn').forEach(function(button) {
     button.classList.add('active');
     var quality = panel.querySelector('#' + button.dataset.quality);
     if (quality) quality.classList.add('active');
- });
+  });
+});
+document.querySelectorAll('.part-btn').forEach(function(button) {
+  button.addEventListener('click', function() {
+    var quality = button.closest('.quality-content');
+    if (!quality) return;
+    quality.querySelectorAll('.part-btn,.part-content').forEach(function(item) { item.classList.remove('active'); });
+    button.classList.add('active');
+    var part = quality.querySelector('#' + button.dataset.part);
+    if (part) part.classList.add('active');
+  });
 });
   var portalAudioContext = null;
 var navigationSoundIndex = 0;
