@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="source-host" content="4khdhub.one">
+
 <title>Love Between Fairy and Devil - Season 1 2022</title>
 <style>
 :root{--bg:#05050a;--panel:rgba(12,14,24,.9);--border:rgba(0,255,200,.18);--text:#e8f0ff;--muted:#7a8ba3;--neon:#00f5d4;--neon2:#ff2e63;--neon3:#7b61ff}
@@ -161,22 +161,37 @@ main{max-width:900px;margin:0 auto}
  <div class="video-modal" id="videoModal" aria-hidden="true"><div class="video-modal-backdrop" data-close-video></div><div class="video-modal-card" role="dialog" aria-modal="true" aria-labelledby="videoModalTitle"><button class="video-modal-close" type="button" data-close-video aria-label="Close video">&times;</button><div class="video-modal-title" id="videoModalTitle">Video</div><video class="video-modal-frame video-modal-video" id="videoModalVideo" controls playsinline preload="metadata" hidden></video><iframe class="video-modal-frame" id="videoModalFrame" title="Video player" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen hidden></iframe><div class="video-modal-status" id="videoModalStatus" role="status" hidden></div></div></div>
 </main></body>
 <script>
+var selectedQuality = '';
+function activateEpisodeQuality(panel, preferred) {
+  if (!panel) return;
+  var buttons = Array.from(panel.querySelectorAll('.quality-btn'));
+  if (!buttons.length) return;
+  var target = preferred ? buttons.find(function(item) {
+    return item.textContent.trim().toLowerCase() === preferred;
+  }) : null;
+  target = target || buttons.find(function(item) { return item.classList.contains('active'); }) || buttons[0];
+  panel.querySelectorAll('.quality-btn,.quality-content').forEach(function(item) { item.classList.remove('active'); });
+  target.classList.add('active');
+  var quality = panel.querySelector('#' + target.dataset.quality);
+  if (quality) quality.classList.add('active');
+}
 document.querySelectorAll('.tab-btn').forEach(function(button) {
   button.addEventListener('click', function() {
     document.querySelectorAll('.tab-btn,.tab-content').forEach(function(item) { item.classList.remove('active'); });
     button.classList.add('active');
     var panel = document.getElementById(button.dataset.tab);
-    if (panel) panel.classList.add('active');
+    if (panel) {
+      panel.classList.add('active');
+      activateEpisodeQuality(panel, selectedQuality);
+    }
   });
 });
 document.querySelectorAll('.quality-btn').forEach(function(button) {
   button.addEventListener('click', function() {
     var panel = button.closest('.tab-content');
     if (!panel) return;
-    panel.querySelectorAll('.quality-btn,.quality-content').forEach(function(item) { item.classList.remove('active'); });
-    button.classList.add('active');
-    var quality = panel.querySelector('#' + button.dataset.quality);
-    if (quality) quality.classList.add('active');
+    selectedQuality = button.textContent.trim().toLowerCase();
+    activateEpisodeQuality(panel, selectedQuality);
   });
 });
 document.querySelectorAll('.part-btn').forEach(function(button) {
@@ -237,7 +252,10 @@ function playPianoSound() {
   var nextIndex = ((index % panels.length) + panels.length) % panels.length;
   panels.forEach(function(item) { item.classList.remove('active'); });
   tabs.forEach(function(item) { item.classList.remove('active'); });
-  if (panels[nextIndex]) panels[nextIndex].classList.add('active');
+  if (panels[nextIndex]) {
+    panels[nextIndex].classList.add('active');
+    activateEpisodeQuality(panels[nextIndex], selectedQuality);
+  }
   if (tabs[nextIndex]) tabs[nextIndex].classList.add('active');
 }
 document.querySelectorAll('[data-episode-nav]').forEach(function(button) {
